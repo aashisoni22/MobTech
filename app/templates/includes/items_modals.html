@@ -1,0 +1,81 @@
+ <style>
+     .modal-content{
+         background-color: aliceblue;
+     }
+     .modal-title{
+         color: black;
+     }
+     .modal-body{
+         color: black;
+     }
+ </style>
+ 
+ <!-- Modal MoreInfo -->
+  <div class="modal fade" id="Modal-MoreInfo-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">
+              {{ item.name}}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{ item.description }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Purchase Confirm -->
+  <div class="modal fade" id="Modal-PurchaseConfirm-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLabel">
+              {{ item.name}}
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">x</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          
+          <form method="POST">
+              {{ purchase_form.hidden_tag() }}
+              <h4 class="text-center">
+                Are you sure you want to buy {{ item.name }} for {{ item.price }} Rs ?
+                you can also visit on following websites
+              </h4>
+              <br>
+              <a style="color:Black" href="https://www.amazon.in/mobile-phones/b/?ie=UTF8&node=1389401031&ref_=nav_cs_mobiles_9292c6cb7b394d30b2467b8f631090a7">amazon</a>
+              <br>
+              <a style="color:Black" href="https://www.flipkart.com/mobiles/apple~brand/pr?sid=tyy,4io">flipkart</a>
+              <br>
+              <a style="color:Black" href="https://www.reliancedigital.in/smartphones/c/S101711?gclid=CjwKCAjwjJmIBhA4EiwAQdCbxlzKabbass3TM7lfOXPe-WNrL8HtZzSxb9M8iW6JOY9vuJzkDcV_MBoC02gQAvD_BwE">Reliance digital</a>
+              <br>
+              <h6 class="text-center">
+                  By clicking Purchase ,You will purchase this item.
+              </h6>
+              <br>
+              <input id="purchased_item" name="purchased_item" type="hidden" value="{{   item.name}}">
+           
+              {{ purchase_form.submit(class="btn btn-outline-success btn-block")}}
+
+          </form>
+         
+           
+           
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>  
